@@ -173,9 +173,7 @@ body {
   filter: blur(25px);
   opacity: 0.5;
 }
-.card-item__focus.-active {
-  opacity: 1;
-}
+
 .card-item__side {
   border-radius: 15px;
   overflow: hidden;
@@ -368,10 +366,7 @@ body {
 }
 .card-item__numberItem {
   width: 16px;
-  display: inline-block;
-}
-.card-item__numberItem.-active {
-  width: 30px;
+  display: inline;
 }
 @media screen and (max-width: 480px) {
   .card-item__numberItem {
@@ -385,9 +380,7 @@ body {
   .card-item__numberItem {
     width: 12px;
   }
-  .card-item__numberItem.-active {
-    width: 8px;
-  }
+
 }
 .card-item__content {
   color: #fff;
@@ -544,66 +537,6 @@ body {
   background-repeat: no-repeat;
   padding-right: 30px;
 }
-.card-input__eye {
-  display: inline-flex;
-  position: absolute;
-  width: 1em;
-  height: 1em;
-  font-size: 24px;
-  border-radius: 50%;
-  top: 35px;
-  right: 10px;
-  opacity: 0.75;
-  color: #8c9cae;
-  cursor: pointer;
-  padding: 0;
-  background: none;
-  display: inline-flex;
-  border: 2px solid currentColor;
-  box-shadow: none;
-  transition: all 0.3s ease-in-out;
-}
-.card-input__eye:before {
-  content: "";
-  position: absolute;
-  background: white;
-  width: 0.35em;
-  height: 0.35em;
-  top: 6px;
-  left: 6px;
-  z-index: 2;
-  border-radius: 50%;
-  transform: scale(0.1);
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
-  transition-delay: 0.1s;
-}
-.card-input__eye:after {
-  content: "";
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  background: currentColor;
-  width: 0.6em;
-  height: 0.6em;
-  border-radius: 50%;
-  transform: scale(0.1);
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
-}
-.card-input__eye:hover:not(:disabled), .card-input__eye.-active:not(:disabled) {
-  color: #2364d2;
-  opacity: 1;
-}
-.card-input__eye.-active::before, .card-input__eye.-active::after {
-  transform: scale(1);
-  opacity: 1;
-}
-.card-input__eye:disabled {
-  cursor: not-allowed;
-  opacity: 0.4;
-}
-
 .slide-fade-up-enter-active {
   transition: all 0.25s ease-in-out;
   transition-delay: 0.1s;
@@ -649,40 +582,3 @@ body {
   transform: translateX(-10px) rotate(45deg);
   pointer-events: none;
 }
-
-.github-btn {
-  position: absolute;
-  right: 40px;
-  bottom: 50px;
-  text-decoration: none;
-  padding: 15px 25px;
-  border-radius: 4px;
-  box-shadow: 0px 4px 30px -6px rgba(36, 52, 70, 0.65);
-  background: #24292e;
-  color: #fff;
-  font-weight: bold;
-  letter-spacing: 1px;
-  font-size: 16px;
-  text-align: center;
-  transition: all 0.3s ease-in-out;
-}
-@media screen and (min-width: 500px) {
-  .github-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 17px 20px -6px rgba(36, 52, 70, 0.36);
-  }
-}
-@media screen and (max-width: 700px) {
-  .github-btn {
-    position: relative;
-    bottom: auto;
-    right: auto;
-    margin-top: 20px;
-  }
-  .github-btn:active {
-    transform: scale(1.1);
-    box-shadow: 0px 17px 20px -6px rgba(36, 52, 70, 0.36);
-  }
-}
-
-/*# sourceMappingURL=style.css.map */

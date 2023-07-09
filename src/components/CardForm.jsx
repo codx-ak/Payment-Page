@@ -1,8 +1,7 @@
-import React from 'react'
 import Card from './Card'
 
 const CardForm = () => {
-  
+
   return (
     <>
     <div className="card-form">
