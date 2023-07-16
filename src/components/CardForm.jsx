@@ -1,12 +1,23 @@
+import { useState } from 'react'
 import Card from './Card'
 
 const CardForm = () => {
 
+  const [cardNumber,setCardNumber]=useState(null)
+  const [userName,setUserName]=useState(null)
+  const [expMonth,setExpMonth]=useState(null)
+  const [expYear,setExpYear]=useState(null)
+  const [cardCvv,setCardCvv]=useState(null)
+  const [rotateCard,setRotateCard]=useState(false)
+
+  function handleChange(e){
+    e.target.focus?setRotateCard(true):setRotateCard(false)
+  }
   return (
     <>
     <div className="card-form">
     <div className="card-list">
-      <Card/>
+      <Card cardNumber={cardNumber} expMonth={expMonth} expYear={expYear} userName={userName} cardCvv={cardCvv} rotateCard={rotateCard}/>
     </div>
     <div className="card-form__inner">
 
@@ -18,6 +29,7 @@ const CardForm = () => {
           className="card-input__input"
           maxLength={16}
           data-card-field
+          onChange={(e)=>setCardNumber(e.target.value)}
           autoComplete="true"
         />
       </div>
@@ -28,6 +40,7 @@ const CardForm = () => {
           type="text"
           id="cardName"
           maxLength={15}
+          onChange={(e)=>setUserName(e.target.value)}
           className="card-input__input"
           data-card-field
           autoComplete='true'
@@ -41,6 +54,7 @@ const CardForm = () => {
             <select
               className="card-input__input -select"
               id="cardMonth"
+              onChange={(e)=>setExpMonth(e.target.value)}
               data-card-field
               defaultValue={0}
             >
@@ -64,18 +78,19 @@ const CardForm = () => {
               className="card-input__input -select"
               id="cardYear"
               data-card-field
+              onChange={(e)=>setExpYear(e.target.value)}
               defaultValue={1}
             >
               <option disabled value={1} >Year</option>
-              <option value="2023">2023</option>
-              <option value="2024">2024</option>
-              <option value="2025">2025</option>
-              <option value="2026">2026</option>
-              <option value="2027">2027</option>
-              <option value="2028">2028</option>
-              <option value="2029">2029</option>
-              <option value="2030">2030</option>
-              <option value="2031">2031</option>
+              <option value="23">2023</option>
+              <option value="24">2024</option>
+              <option value="25">2025</option>
+              <option value="26">2026</option>
+              <option value="27">2027</option>
+              <option value="28">2028</option>
+              <option value="29">2029</option>
+              <option value="30">2030</option>
+              <option value="31">2031</option>
             </select>
 
           </div>
@@ -91,6 +106,8 @@ const CardForm = () => {
               id="cardCvv"
               data-card-field
               autoComplete="true"
+              onFocus={()=>setRotateCard(true)}
+              onChange={(e)=>setCardCvv(e.target.value)}
             />
           </div>
         </div>

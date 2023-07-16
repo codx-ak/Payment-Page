@@ -2,15 +2,16 @@ import React from 'react'
 import chip from '../assets/images/chip.png'
 import currentCardBackground from '../assets/images/6.jpeg'
 
-const Card = () => {
-  function cardRotate(){
-    const CardItem=document.querySelector(".card-item")
-    CardItem.classList.toggle("-active");
-    return CardItem.classList.remove("-active")
-  }
+const Card = ({cardNumber,expMonth,expYear,userName,cardCvv,rotateCard}) => {
+  
+
+  let cardNumberChange=String(cardNumber)
+  let cardNumberSplit=cardNumberChange.substring(0,4)+" "+cardNumberChange.substring(4,8)+" "+
+                      cardNumberChange.substring(8,12)+" "+cardNumberChange.substring(12,)
+  
   return (
     <>
-    <div className="card-item">
+    <div className={`${rotateCard ?'card-item -active':'card-item'}`}>
     <div className="card-item__side -front">
       
       <div className="card-item__cover">
@@ -38,7 +39,7 @@ const Card = () => {
         <label htmlFor="cardNumber" className="card-item__number" >
             <span>
               <div name="slide-fade-up">
-                <div className="card-item__numberItem">#### #### #### ####</div>
+                <div className="card-item__numberItem">{cardNumber?cardNumberSplit:"#### #### #### ####"}</div>
               </div>
             </span>
         </label>
@@ -49,7 +50,7 @@ const Card = () => {
             <div name="slide-fade-up">
               <div className="card-item__name" >
                 <div name="slide-fade-right">
-                  <span>Ak</span>
+                  <span>{userName?userName:"Name"}</span>
                 </div>
               </div>
             </div>
@@ -59,13 +60,13 @@ const Card = () => {
             <label htmlFor="cardMonth" className="card-item__dateTitle">Expires</label>
             <label htmlFor="cardMonth" className="card-item__dateItem">
               <div name="slide-fade-up">
-                <span>10</span>
+                <span>{expMonth?expMonth:"MM"}</span>
               </div>
             </label>
             /
             <label htmlFor="cardYear" className="card-item__dateItem">
               <div name="slide-fade-up">
-                <span>23</span>
+                <span>{expYear?expYear:"YY"}</span>
               </div>
             </label>
           </div>
@@ -84,7 +85,7 @@ const Card = () => {
       <div className="card-item__cvv">
         <div className="card-item__cvvTitle">CVV</div>
         <div className="card-item__cvvBand">
-          <span>*</span>
+          <span>{cardCvv?cardCvv:"0000"}</span>
         </div>
         <div className="card-item__type">
           <img
