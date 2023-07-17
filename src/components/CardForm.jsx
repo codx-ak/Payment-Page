@@ -9,15 +9,34 @@ const CardForm = () => {
   const [expYear,setExpYear]=useState(null)
   const [cardCvv,setCardCvv]=useState(null)
   const [rotateCard,setRotateCard]=useState(false)
+  const [cardType,setCardType]=useState('default')
 
-  function handleChange(e){
-    e.target.focus?setRotateCard(true):setRotateCard(false)
-  }
+   function cardd(){
+      const cardNumber2=String(cardNumber?cardNumber:null);
+      if(cardNumber2.startsWith(4,0)) return setCardType('visa')
+      if(cardNumber2.startsWith(34||37,0)) return setCardType('amex')
+      if(cardNumber2.startsWith(5,0)) return setCardType('mastercard')
+      if(cardNumber2.startsWith(6011,0)) return setCardType('discover')
+      if(cardNumber2.startsWith(62,0)) return setCardType('unionpay')
+      if(cardNumber2.startsWith(35,0)) return setCardType('jcb')
+      return setCardType("default")
+    }
+
+let values={
+  cardNumber,
+  expMonth,
+  expYear,
+  userName,
+  cardCvv,
+  rotateCard,
+  cardType
+}
+
   return (
     <>
     <div className="card-form">
     <div className="card-list">
-      <Card cardNumber={cardNumber} expMonth={expMonth} expYear={expYear} userName={userName} cardCvv={cardCvv} rotateCard={rotateCard}/>
+      <Card values={values}/>
     </div>
     <div className="card-form__inner">
 
@@ -29,7 +48,9 @@ const CardForm = () => {
           className="card-input__input"
           maxLength={16}
           data-card-field
-          onChange={(e)=>setCardNumber(e.target.value)}
+          onFocus={(e)=>setRotateCard(false)}
+          onChange={(e)=>{setCardNumber(e.target.value)
+                          cardd()}}
           autoComplete="true"
         />
       </div>
@@ -40,6 +61,7 @@ const CardForm = () => {
           type="text"
           id="cardName"
           maxLength={15}
+          onFocus={(e)=>setRotateCard(false)}
           onChange={(e)=>setUserName(e.target.value)}
           className="card-input__input"
           data-card-field
@@ -55,6 +77,7 @@ const CardForm = () => {
               className="card-input__input -select"
               id="cardMonth"
               onChange={(e)=>setExpMonth(e.target.value)}
+              onFocus={(e)=>setRotateCard(false)}
               data-card-field
               defaultValue={0}
             >
@@ -79,6 +102,7 @@ const CardForm = () => {
               id="cardYear"
               data-card-field
               onChange={(e)=>setExpYear(e.target.value)}
+              onFocus={(e)=>setRotateCard(false)}
               defaultValue={1}
             >
               <option disabled value={1} >Year</option>
