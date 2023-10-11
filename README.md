@@ -1,4 +1,4 @@
-live Link : https://payment-page-codx.netlify.app/
+live Link : https://codx-payment.netlify.app
 
 
 # Getting Started with Create React App
